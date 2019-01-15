@@ -16,6 +16,7 @@ public class ChessBoard {
 	private ObservableList<Piece> obsWhiteTakenPieces = FXCollections.observableList(whiteTakenPieces);
 	private ObservableList<Piece> obsBlackTakenPieces = FXCollections.observableList(blackTakenPieces);
 
+	//Create 2-dimensional gameboard
 	public ChessBoard() {
 		board = new Square[8][8];
 		for (int c = 0; c < 8; c++)
@@ -28,7 +29,7 @@ public class ChessBoard {
 		takenPieces = new ArrayList<Piece>();
 
 	}
-
+	//Create 2-dimensional gameboard
 	public ChessBoard(Coordinate positions[], Piece pieces[]) throws IllegalArgumentException {
 		if (positions.length != pieces.length)
 			throw new IllegalArgumentException("The list of positions must correspond to the list of pieces");
@@ -44,6 +45,7 @@ public class ChessBoard {
 		fullMove = 1;
 	}
 
+	//Method initializes the chessboard with the locations of all pieces
 	private void reset() {
 		// White rows
 		board[0][0].addPiece(new Rook(ChessColour.WHITE));
@@ -79,11 +81,12 @@ public class ChessBoard {
 
 	}
 
-	
+	//Method returns square on chessboard at a specified coordinate
 	protected Square getSquare(Coordinate c) {
 		return board[c.getColumnNumber()][c.getRowNumber()];
 	}
 
+	//Method is used by players to make moves and take away pieces
 	public boolean move(Coordinate src, Coordinate dest) {
 
 		Square srcSquare = this.getSquare(src);
@@ -121,6 +124,7 @@ public class ChessBoard {
 		obsBlackTakenPieces.addListener(listener);
 	}
 
+	//Print board to console using my own custom notation
 	public String toString() {
 
 		String s = "Board\n";
@@ -135,6 +139,7 @@ public class ChessBoard {
 		return s;
 	}
 
+	//Print Board out to console using FEN notation
 	public String toFEN() {
 
 		String s = "";
