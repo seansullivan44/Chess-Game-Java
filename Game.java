@@ -16,7 +16,7 @@ import javafx.scene.image.*;
 import java.util.List;
 import javafx.collections.*;
 
-public class Assign4 extends Application implements ListChangeListener {
+public class Game extends Application implements ListChangeListener {
 
 	// Create board and button objects
 	private ChessBoard board = new ChessBoard();
